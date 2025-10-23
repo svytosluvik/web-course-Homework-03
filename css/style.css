@@ -1,0 +1,633 @@
+:root {
+    /* Цветовая схема - минимум 5 цветов */
+    --witcher-dark: #0c0c0c;
+    --witcher-brown: #2a1c13;
+    --witcher-gold: #c9a66b;
+    --witcher-red: #8b0000;
+    --witcher-gray: #3a3a3a;
+    --witcher-light: #d4c4a8;
+    --witcher-border: #5d4c37;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+body {
+    font-family: 'Cinzel', serif;
+    background: var(--witcher-dark);
+    color: var(--witcher-light);
+    line-height: 1.6;
+    min-height: 100vh;
+    background-image: 
+        url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(12, 12, 12, 0.85);
+    z-index: -1;
+}
+
+/* === ШАПКА В СТИЛЕ КНИГИ ВЕДЬМАКА === */
+header {
+    background: linear-gradient(135deg, 
+        rgba(42, 28, 19, 0.95) 0%, 
+        rgba(58, 58, 58, 0.9) 100%);
+    border-bottom: 3px solid var(--witcher-gold);
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.7);
+}
+
+header h1 {
+    color: var(--witcher-gold);
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.8),
+        0 0 10px rgba(201, 166, 107, 0.3);
+    font-family: 'MedievalSharp', cursive;
+    position: relative;
+}
+
+header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--witcher-gold) 50%, 
+        transparent 100%);
+}
+
+/* Портрет в стиле Bestiary */
+header img {
+    width: 220px;
+    height: 220px;
+    border: 5px double var(--witcher-gold);
+    border-radius: 5px;
+    box-shadow: 
+        0 0 30px rgba(201, 166, 107, 0.3),
+        inset 0 0 30px rgba(0, 0, 0, 0.5);
+    margin: 20px 0;
+    filter: sepia(0.3) contrast(1.1);
+    transition: all 0.4s ease;
+    object-fit: cover;
+}
+
+header img:hover {
+    transform: scale(1.05);
+    box-shadow: 
+        0 0 40px rgba(201, 166, 107, 0.5),
+        inset 0 0 40px rgba(0, 0, 0, 0.7);
+    filter: sepia(0.1) contrast(1.2);
+}
+
+/* === НАВИГАЦИЯ В СТИЛЕ МЕНЮ ВЕДЬМАКА === */
+nav {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--witcher-light);
+    text-decoration: none;
+    padding: 15px 30px;
+    border: 2px solid var(--witcher-border);
+    background: linear-gradient(135deg, 
+        rgba(42, 28, 19, 0.8) 0%, 
+        rgba(93, 76, 55, 0.6) 100%);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9em;
+}
+
+nav a::before {
+    content: '•';
+    position: absolute;
+    left: 15px;
+    color: var(--witcher-gold);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+nav a:hover {
+    background: linear-gradient(135deg, 
+        rgba(93, 76, 55, 0.8) 0%, 
+        rgba(201, 166, 107, 0.3) 100%);
+    border-color: var(--witcher-gold);
+    color: var(--witcher-gold);
+    transform: translateY(-3px);
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(201, 166, 107, 0.2);
+}
+
+nav a:hover::before {
+    opacity: 1;
+}
+
+/* === ОСНОВНОЕ СОДЕРЖИМОЕ === */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+section {
+    
+    background: linear-gradient(135deg, 
+        rgba(42, 28, 19, 0.9) 0%, 
+        rgba(58, 58, 58, 0.8) 100%);
+    border: 2px solid var(--witcher-border);
+    border-radius: 8px;
+    padding: 35px;
+    margin-bottom: 30px;
+    position: relative;
+    box-shadow: 
+        0 5px 25px rgba(0, 0, 0, 0.6),
+        inset 0 0 30px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+section:hover {
+    border-color: var(--witcher-gold);
+    box-shadow: 
+        0 8px 35px rgba(0, 0, 0, 0.7),
+        0 0 30px rgba(201, 166, 107, 0.1),
+        inset 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Декоративные уголки */
+section::before,
+section::after {
+    content: '❧';
+    position: absolute;
+    color: var(--witcher-gold);
+    opacity: 0.3;
+    font-size: 1.5em;
+}
+
+section::before {
+    top: 10px;
+    left: 10px;
+}
+
+section::after {
+    bottom: 10px;
+    right: 10px;
+}
+
+h2 {
+    color: var(--witcher-gold);
+    font-size: 2em;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--witcher-border);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'MedievalSharp', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100px;
+    height: 2px;
+    background: var(--witcher-gold);
+}
+
+p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+    font-size: 1.1em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Ссылки в контенте */
+a {
+    color: var(--witcher-gold);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    font-weight: bold;
+}
+
+a:hover {
+    color: var(--witcher-light);
+    text-shadow: 0 0 10px rgba(201, 166, 107, 0.7);
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--witcher-gold);
+    transition: width 0.3s ease;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+/* === ПОДВАЛ В СТИЛЕ СВИТКА === */
+footer {
+    background: linear-gradient(135deg, 
+        rgba(42, 28, 19, 0.95) 0%, 
+        rgba(12, 12, 12, 0.9) 100%);
+    border-top: 3px solid var(--witcher-border);
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 60px;
+    position: relative;
+}
+
+footer::before {
+    content: '⚜';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--witcher-dark);
+    padding: 0 30px;
+    color: var(--witcher-gold);
+    font-size: 2em;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--witcher-gold) 20%, 
+        var(--witcher-border) 50%, 
+        var(--witcher-gold) 80%, 
+        transparent 100%);
+    margin: 25px 0;
+}
+
+/* === АДАПТИВНОСТЬ === */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+    
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav a {
+        width: 250px;
+        text-align: center;
+    }
+    
+    section {
+        padding: 25px;
+    }
+    
+    header img {
+        width: 180px;
+        height: 180px;
+    }
+    
+    header::before,
+    header::after {
+        display: none;
+    }
+}
+
+/* Анимация появления */
+main section {
+    animation: scrollReveal 0.8s ease-out;
+}
+
+@keyframes scrollReveal {
+    from {
+        opacity: 0;
+        transform: translateY(50px) rotateX(10deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+/* Задержки для последовательного появления */
+section:nth-child(1) { animation-delay: 0.1s; }
+section:nth-child(2) { animation-delay: 0.2s; }
+section:nth-child(3) { animation-delay: 0.3s; }
+section:nth-child(4) { animation-delay: 0.4s; }
+
+/* Эффект старинного пергамента для текста */
+p {
+    position: relative;
+    padding: 10px;
+}
+
+p::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(201, 166, 107, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(139, 0, 0, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.site-footer p {
+    color: var(--text-muted);
+    font-size: 0.9em;
+}
+
+
+/* ==Эффект для ссылок== */
+.scroll-link {
+    color: var(--witcher-gold);
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    position: relative;
+    transition: all 0.5s ease;
+    background: 
+        linear-gradient(var(--witcher-brown), var(--witcher-brown)) padding-box,
+        linear-gradient(45deg, transparent 30%, var(--witcher-gold) 50%, transparent 70%) border-box;
+}
+
+.scroll-link:hover {
+    color: var(--witcher-light);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.5),
+        inset 0 0 20px rgba(201, 166, 107, 0.1);
+    
+    background: 
+        linear-gradient(rgba(42, 28, 19, 0.9), rgba(42, 28, 19, 0.9)) padding-box,
+        linear-gradient(45deg, var(--witcher-gold) 0%, transparent 30%, var(--witcher-gold) 50%, transparent 70%, var(--witcher-gold) 100%) border-box;
+    background-size: 200% 200%;
+    animation: scrollReveal 1.5s ease infinite;
+}
+
+@keyframes scrollReveal {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+
+
+        
+        
+
+/* === ДОПОЛНИТЕЛЬНЫЕ ЭФФЕКТЫ === */
+.magic-effects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.rune {
+    position: absolute;
+    font-size: 1.5em;
+    color: var(--witcher-gold);
+    opacity: 0.1;
+    animation: float 10s linear infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg) scale(0.5);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Случайные позиции для рун */
+.rune:nth-child(1) { left: 10%; animation-delay: 0s; }
+.rune:nth-child(2) { left: 20%; animation-delay: 2s; }
+.rune:nth-child(3) { left: 30%; animation-delay: 4s; }
+.rune:nth-child(4) { left: 70%; animation-delay: 1s; }
+.rune:nth-child(5) { left: 80%; animation-delay: 3s; }
+.rune:nth-child(6) { left: 90%; animation-delay: 5s; }
+
+        
+        /* === 3D СЦЕНА ДЛЯ КУБИКА === */
+        .cube-scene {
+            width: 200px;
+            height: 200px;
+            margin: 40px auto;
+            perspective: 800px;
+            position: relative;
+        }
+
+        .cube-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: smoothRotate 10s infinite linear;
+        }
+
+        /* анимация  плавная */
+        @keyframes smoothRotate {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            100% {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+
+
+        /* Основной куб */
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        /* Общие стили для граней куба */
+        .cube-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(42, 28, 19, 0.95) 0%, 
+                rgba(93, 76, 55, 0.9) 100%);
+            border: 3px solid var(--witcher-gold);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--witcher-gold);
+            text-shadow: 
+                0 0 10px rgba(201, 166, 107, 0.5),
+                0 0 20px rgba(139, 0, 0, 0.3);
+            box-shadow: 
+                inset 0 0 30px rgba(0, 0, 0, 0.6),
+                0 0 20px rgba(201, 166, 107, 0.2);
+            backface-visibility: visible;
+        }
+
+        /* Точки на гранях */
+        .dots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            width: 80%;
+            height: 80%;
+            gap: 8px;
+        }
+
+        .dot {
+            background: var(--witcher-gold);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 10px rgba(201, 166, 107, 0.8),
+                inset 0 0 5px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        /* Расположение точек для каждой грани */
+        .face-1 .dots .dot:nth-child(5) { 
+            background: var(--witcher-red);
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.8);
+        }
+
+        .face-2 .dots .dot:nth-child(3),
+        .face-2 .dots .dot:nth-child(7) { 
+            background: var(--witcher-red);
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.8);
+        }
+
+        .face-3 .dots .dot:nth-child(3),
+        .face-3 .dots .dot:nth-child(5),
+        .face-3 .dots .dot:nth-child(7) { 
+            background: var(--witcher-red);
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.8);
+        }
+
+        .face-4 .dots .dot:nth-child(1),
+        .face-4 .dots .dot:nth-child(3),
+        .face-4 .dots .dot:nth-child(7),
+        .face-4 .dots .dot:nth-child(9) { 
+            background: var(--witcher-red);
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.8);
+        }
+
+        .face-5 .dots .dot:nth-child(1),
+        .face-5 .dots .dot:nth-child(3),
+        .face-5 .dots .dot:nth-child(5),
+        .face-5 .dots .dot:nth-child(7),
+        .face-5 .dots .dot:nth-child(9) { 
+            background: var(--witcher-red);
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.8);
+        }
+
+        .face-6 .dots .dot:nth-child(1),
+        .face-6 .dots .dot:nth-child(3),
+        .face-6 .dots .dot:nth-child(4),
+        .face-6 .dots .dot:nth-child(6),
+        .face-6 .dots .dot:nth-child(7),
+        .face-6 .dots .dot:nth-child(9) { 
+            background: var(--witcher-red);
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.8);
+        }
+
+        /* Позиционирование граней в 3D пространстве */
+        .face-1 { transform: rotateY(0deg) translateZ(100px); }
+        .face-2 { transform: rotateY(90deg) translateZ(100px); }
+        .face-3 { transform: rotateY(180deg) translateZ(100px); }
+        .face-4 { transform: rotateY(-90deg) translateZ(100px); }
+        .face-5 { transform: rotateX(90deg) translateZ(100px); }
+        .face-6 { transform: rotateX(-90deg) translateZ(100px); }
+
+        
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .cube-scene {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .cube-face {
+                font-size: 2em;
+            }
+            
+            .face-1 { transform: rotateY(0deg) translateZ(75px); }
+            .face-2 { transform: rotateY(90deg) translateZ(75px); }
+            .face-3 { transform: rotateY(180deg) translateZ(75px); }
+            .face-4 { transform: rotateY(-90deg) translateZ(75px); }
+            .face-5 { transform: rotateX(90deg) translateZ(75px); }
+            .face-6 { transform: rotateX(-90deg) translateZ(75px); }
+            
+            .title {
+                font-size: 2em;
+            }
+            
+            .animation-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+        }

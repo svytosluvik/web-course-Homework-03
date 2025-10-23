@@ -1,0 +1,728 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English&family=Cinzel+Decorative&display=swap');
+
+:root {
+    --witcher-black: #0a0a0a;
+    --witcher-blood: #5c0000;
+    --witcher-steel: #8a8a8a;
+    --witcher-silver: #c0c0c0;
+    --witcher-parchment: #2a1f17;
+    --witcher-ink: #e8d5b5;
+    --witcher-rust: #8b4513;
+    --witcher-dark-gold: #b8860b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'IM Fell English', serif;
+    background: var(--witcher-black);
+    color: var(--witcher-ink);
+    line-height: 1.6;
+    min-height: 100vh;
+    background-image: 
+        linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)),
+        url('https://images.unsplash.com/photo-1542736667-069246bdbc6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    position: relative;
+    border: 15px solid transparent;
+    border-image: url('https://i.imgur.com/6QJjQ7a.png') 30 round;
+}
+
+/* Эффект старинного свитка */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(92, 0, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
+        linear-gradient(45deg, transparent 49%, rgba(184, 134, 11, 0.03) 50%, transparent 51%);
+    background-size: 100% 100%, 100% 100%, 50px 50px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* === ШАПКА В СТИЛЕ ВЕДЬМАЧЬЕГО ЗНАКА === */
+header {
+    background: 
+        radial-gradient(ellipse at top, rgba(92, 0, 0, 0.3) 0%, transparent 70%),
+        linear-gradient(to bottom, rgba(42, 31, 23, 0.95), rgba(10, 10, 10, 0.98));
+    border-bottom: 5px solid var(--witcher-blood);
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 50px rgba(92, 0, 0, 0.5);
+}
+
+/*==прикольная светяшка==*/
+header::before {
+    content: '☕';
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    font-size: 2em;
+    animation: alert 2s infinite;
+}
+@keyframes alert {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+}
+
+header h1 {
+    color: var(--witcher-silver);
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 
+        0 0 10px rgba(192, 192, 192, 0.3),
+        0 0 20px rgba(92, 0, 0, 0.5);
+    font-family: 'Cinzel Decorative', cursive;
+    font-weight: 700;
+    position: relative;
+    background: linear-gradient(45deg, var(--witcher-silver), var(--witcher-dark-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ==кружок== */
+header img {
+    width: 200px;
+    height: 200px;
+    border: 8px double var(--witcher-blood);
+    border-radius: 50%;
+    box-shadow: 
+        inset 0 0 30px rgba(0, 0, 0, 0.8),
+        0 0 40px rgba(92, 0, 0, 0.6),
+        0 0 0 5px rgba(139, 69, 19, 0.3);
+    margin: 20px 0;
+    filter: grayscale(0.3) contrast(1.2) brightness(0.9);
+    transition: all 0.5s ease;
+    object-fit: cover;
+    position: relative;
+}
+
+header img:hover {
+    transform: scale(1.08) rotate(5deg);
+    box-shadow: 
+        inset 0 0 40px rgba(0, 0, 0, 0.9),
+        0 0 60px rgba(92, 0, 0, 0.8),
+        0 0 0 8px rgba(184, 134, 11, 0.5);
+    filter: grayscale(0) contrast(1.3) brightness(1.1);
+}
+
+/* === НАВИГАЦИЯ В СТИЛЕ ВЕДЬМАЧЬИХ ЗЕЛИЙ === */
+nav {
+    margin: 25px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--witcher-ink);
+    text-decoration: none;
+    padding: 12px 20px;
+    border: 2px solid var(--witcher-rust);
+    background: linear-gradient(135deg, 
+        rgba(92, 0, 0, 0.3) 0%, 
+        rgba(139, 69, 19, 0.2) 100%);
+    border-radius: 2px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8em;
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(184, 134, 11, 0.2), 
+        transparent);
+    transition: left 0.6s ease;
+}
+
+nav a:hover {
+    background: linear-gradient(135deg, 
+        rgba(92, 0, 0, 0.6) 0%, 
+        rgba(184, 134, 11, 0.3) 100%);
+    border-color: var(--witcher-dark-gold);
+    color: var(--witcher-silver);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 5px 15px rgba(92, 0, 0, 0.4),
+        0 0 10px rgba(184, 134, 11, 0.3);
+}
+
+nav a:hover::before {
+    left: 100%;
+}
+
+/* === ОСНОВНОЕ СОДЕРЖИМОЕ === */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+section {
+    background: 
+        radial-gradient(circle at top left, rgba(92, 0, 0, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, 
+        rgba(42, 31, 23, 0.9) 0%, 
+        rgba(10, 10, 10, 0.95) 100%);
+    border: 1px solid var(--witcher-rust);
+    border-radius: 0;
+    padding: 30px;
+    margin-bottom: 25px;
+    position: relative;
+    box-shadow: 
+        inset 0 0 30px rgba(0, 0, 0, 0.7),
+        0 5px 20px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    border-left: 5px solid var(--witcher-blood);
+}
+
+section img {
+    text-align: center;
+    border: 5px double var(--witcher-gold);
+    border-radius: 5px;
+    box-shadow: 
+        0 0 30px rgba(201, 166, 107, 0.3),
+        inset 0 0 30px rgba(0, 0, 0, 0.5);
+    margin: 20px 0;
+    filter: sepia(0.3) contrast(1.1);
+    transition: all 0.4s ease;
+    object-fit: cover;
+}
+
+section:hover {
+    border-left-color: var(--witcher-dark-gold);
+    box-shadow: 
+        inset 0 0 40px rgba(0, 0, 0, 0.8),
+        0 8px 25px rgba(92, 0, 0, 0.3);
+    transform: translateX(5px);
+}
+
+/* Металлические заклепки */
+section::before,
+section::after {
+    content: '•';
+    position: absolute;
+    color: var(--witcher-steel);
+    font-size: 1.2em;
+    text-shadow: 0 0 5px rgba(192, 192, 192, 0.5);
+}
+
+section::before {
+    top: 15px;
+    left: 15px;
+}
+
+section::after {
+    bottom: 15px;
+    right: 15px;
+}
+
+h2 {
+    color: var(--witcher-silver);
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--witcher-rust);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'UnifrakturMaguntia', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: var(--witcher-blood);
+}
+
+/* Стили для параграфов */
+p {
+    margin-bottom: 1.3em;
+    line-height: 1.7;
+    font-size: 1.1em;
+    text-align: justify;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+    position: relative;
+    padding: 8px 0;
+    color: var(--witcher-ink);
+}
+
+/* Стили для списков */
+ul, ol {
+    margin: 15px 0;
+    padding-left: 30px;
+}
+
+li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    font-size: 1.05em;
+    position: relative;
+    color: var(--witcher-ink);
+    padding-left: 10px;
+}
+
+ul li::before {
+    content: '🗡';
+    position: absolute;
+    left: -25px;
+    color: var(--witcher-blood);
+    font-size: 0.8em;
+}
+
+ol {
+    list-style-type: none;
+    counter-reset: witcher-counter;
+}
+
+ol li {
+    counter-increment: witcher-counter;
+}
+
+ol li::before {
+    content: counter(witcher-counter) '.';
+    position: absolute;
+    left: -25px;
+    color: var(--witcher-dark-gold);
+    font-weight: bold;
+    font-family: 'UnifrakturMaguntia', cursive;
+}
+
+/* Стили для таблицы */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: rgba(42, 31, 23, 0.8);
+    border: 1px solid var(--witcher-rust);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--witcher-rust);
+    font-size: 1.05em;
+}
+
+th {
+    background: rgba(92, 0, 0, 0.4);
+    color: var(--witcher-silver);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'UnifrakturMaguntia', cursive;
+    border-right: 1px solid var(--witcher-rust);
+}
+
+tr:hover {
+    background: rgba(184, 134, 11, 0.1);
+}
+
+/* Ссылки в контенте */
+a {
+    color: var(--witcher-dark-gold);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    font-weight: bold;
+    border-bottom: 1px dotted var(--witcher-rust);
+}
+
+a:hover {
+    color: var(--witcher-silver);
+    text-shadow: 0 0 8px rgba(184, 134, 11, 0.7);
+    border-bottom-color: var(--witcher-dark-gold);
+}
+
+/* === ПОДВАЛ В СТИЛЕ ВЕДЬМАЧЬЕГО КОНТРАКТА === */
+footer {
+    background: 
+        radial-gradient(ellipse at bottom, rgba(92, 0, 0, 0.2) 0%, transparent 70%),
+        linear-gradient(to top, rgba(42, 31, 23, 0.95), rgba(10, 10, 10, 0.98));
+    border-top: 3px solid var(--witcher-rust);
+    padding: 25px 20px;
+    text-align: center;
+    margin-top: 50px;
+    position: relative;
+}
+
+footer::before {
+    content: '📌';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--witcher-black);
+    padding: 0 25px;
+    color: var(--witcher-silver);
+    font-size: 1.8em;
+    text-shadow: 0 0 10px rgba(192, 192, 192, 0.3);
+}
+
+hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--witcher-blood) 20%, 
+        var(--witcher-rust) 50%, 
+        var(--witcher-blood) 80%, 
+        transparent 100%);
+    margin: 20px 0;
+}
+
+footer p {
+    text-align: center;
+    font-size: 0.9em;
+    color: var(--witcher-steel);
+    opacity: 0.7;
+    margin-bottom: 0;
+}
+
+/* === АДАПТИВНОСТЬ === */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+    
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav a {
+        width: 220px;
+        text-align: center;
+    }
+    
+    section {
+        padding: 20px;
+    }
+    
+    header img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    header::before,
+    header::after {
+        display: none;
+    }
+    
+    p {
+        font-size: 1em;
+        line-height: 1.6;
+        text-align: left;
+    }
+}
+
+/* Анимация появления */
+main section {
+    animation: darkReveal 1s ease-out;
+}
+
+@keyframes darkReveal {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+        filter: blur(0);
+    }
+}
+
+/* Задержки для последовательного появления */
+section:nth-child(1) { animation-delay: 0.1s; }
+section:nth-child(2) { animation-delay: 0.2s; }
+section:nth-child(3) { animation-delay: 0.3s; }
+section:nth-child(4) { animation-delay: 0.4s; }
+section:nth-child(5) { animation-delay: 0.5s; }
+section:nth-child(6) { animation-delay: 0.6s; }
+
+/* ==в углу контейнера== */
+h2::before {
+    content: '👾';
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    font-size: 0.8em;
+    opacity: 0.5;
+    animation: bloodDrip 3s infinite;
+}
+
+@keyframes bloodDrip {
+    0%, 100% { transform: translateY(0px); opacity: 0.3; }
+    50% { transform: translateY(3px); opacity: 0.7; }
+}
+
+
+/* === СТИЛЬ КНОПКИ ВОЗВРАЩЕНИЯ К НАВИГАЦИИ === */
+up {
+    display: inline-block;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, 
+        rgba(92, 0, 0, 0.4) 0%, 
+        rgba(139, 69, 19, 0.3) 100%);
+    color: #e8d5b5;
+    text-decoration: none;
+    border: 2px solid #8b4513;
+    border-radius: 3px;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9em;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+    box-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Эффект свечения при наведении */
+up::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(201, 166, 107, 0.2), 
+        transparent);
+    transition: left 0.6s ease;
+}
+
+up:hover::before {
+    left: 100%;
+}
+
+/* Основные эффекты при наведении */
+up:hover {
+    background: linear-gradient(135deg, 
+        rgba(92, 0, 0, 0.6) 0%, 
+        rgba(201, 166, 107, 0.2) 100%);
+    border-color: #c9a66b;
+    color: #f0e6d2;
+    transform: translateY(-2px);
+    box-shadow: 
+        0 4px 15px rgba(92, 0, 0, 0.4),
+        0 0 20px rgba(201, 166, 107, 0.2);
+}
+
+/* Иконка стрелки (опционально) */
+up::after {
+    content: '↑';
+    margin-left: 8px;
+    font-size: 1.1em;
+    transition: transform 0.3s ease;
+}
+
+up:hover::after {
+    transform: translateY(-2px);
+}
+
+/* Анимация пульсации для привлечения внимания */
+@keyframes navPulse {
+    0%, 100% { 
+        box-shadow: 
+            0 2px 10px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    50% { 
+        box-shadow: 
+            0 2px 15px rgba(92, 0, 0, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1),
+            0 0 10px rgba(201, 166, 107, 0.3);
+    }
+}
+
+/* Применяем анимацию только когда страница прокручена */
+up {
+    animation: navPulse 3s ease-in-out infinite;
+}
+
+
+
+/* Вариант для мобильных устройств */
+@media (max-width: 768px) {
+    #nav {
+        padding: 10px 20px;
+        font-size: 0.8em;
+        display: block;
+        text-align: center;
+        margin: 15px auto;
+        max-width: 200px;
+    }
+}
+
+/* Эффект "знака ведьмака" */
+.witcher-sign-link {
+    color: var(--witcher-light);
+    text-decoration: none;
+    position: relative;
+    padding: 0 4px;
+    transition: all 0.4s ease;
+}
+
+.witcher-sign-link::before {
+    content: '➡💥';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    opacity: 0;
+    transition: all 0.3s ease;
+    color: var(--witcher-gold);
+    font-size: 0.8em;
+}
+
+.witcher-sign-link:hover {
+    color: var(--witcher-gold);
+    padding-left: 20px;
+    text-shadow: 0 0 10px rgba(201, 166, 107, 0.5);
+}
+
+.witcher-sign-link:hover::before {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+}
+
+/* === ФОРМА ОБРАТНОЙ СВЯЗИ === */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--witcher-gold);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9em;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(42, 28, 19, 0.8);
+            border: 2px solid var(--witcher-border);
+            border-radius: 5px;
+            color: var(--witcher-light);
+            font-family: 'Cinzel', serif;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--witcher-gold);
+            box-shadow: 0 0 15px rgba(201, 166, 107, 0.3);
+            background: rgba(42, 28, 19, 0.9);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        select.form-control {
+            appearance: none;
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 40px;
+        }
+
+        /* Кнопка отправки */
+        .submit-btn {
+            background: linear-gradient(135deg, 
+                rgba(42, 28, 19, 0.9) 0%, 
+                rgba(93, 76, 55, 0.8) 100%);
+            color: var(--witcher-light);
+            border: 2px solid var(--witcher-border);
+            padding: 15px 40px;
+            font-size: 1.1em;
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .submit-btn::before {
+            content: '✉';
+            position: absolute;
+            left: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, 
+                rgba(93, 76, 55, 0.9) 0%, 
+                rgba(201, 166, 107, 0.3) 100%);
+            border-color: var(--witcher-gold);
+            color: var(--witcher-gold);
+            transform: translateY(-3px);
+            box-shadow: 
+                0 5px 20px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(201, 166, 107, 0.2);
+        }
+
+        .submit-btn:hover::before {
+            opacity: 1;
+        }
+
