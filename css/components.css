@@ -24,14 +24,12 @@ body {
     min-height: 100vh;
     background-image: 
         linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)),
-        url('https://images.unsplash.com/photo-1542736667-069246bdbc6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+        url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
     position: relative;
-    border: 15px solid transparent;
-    border-image: url('https://i.imgur.com/6QJjQ7a.png') 30 round;
-}
+    }
 
 /* Эффект старинного свитка */
 body::before {
