@@ -293,7 +293,7 @@ li {
 }
 
 ul li::before {
-    content: '🗡';
+    content: '⭕';
     position: absolute;
     left: -25px;
     color: var(--witcher-blood);
