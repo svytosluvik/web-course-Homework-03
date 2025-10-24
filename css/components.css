@@ -583,7 +583,7 @@ up {
 
 /* Вариант для мобильных устройств */
 @media (max-width: 768px) {
-    #nav {
+    up {
         padding: 10px 20px;
         font-size: 0.8em;
         display: block;
